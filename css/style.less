@@ -1,0 +1,427 @@
+*, *:before, *:after {
+	box-sizing: border-box;	
+}
+
+a:hover,
+a:focus,
+a:visited,
+a:active,
+a {
+	text-decoration: none;
+}
+
+ul {
+	list-style: none;
+}
+
+// h1 {
+// 	text-align: center;
+// 	padding-bottom: 100px;
+// }
+
+.hidden {
+	display: none;
+}
+.js-carousel_modal, .gallery_modal {
+	align-items: center;
+	justify-content: space-between;
+	display: none;
+	position: fixed;  
+	z-index: 11;
+	background: rgba(0, 0, 0, .8);
+	  left: 0;
+	  right: 0;
+	  top: 0;
+	  bottom: 0;
+	 -webkit-user-select: none; /*отмена дурацкого выделения*/
+	  -moz-user-select: none;
+	  -ms-user-select: none;
+	.modal-arrow, .modal-close {
+	  font-size: 3rem;
+	  color: #fff;
+	  cursor: pointer;
+	  &:hover {
+	  	transform: scale(1.1);
+	  }
+	}
+	.modal-close {
+	  position: absolute;
+	  top: 10vh;
+	  right: 10vw;
+	}
+	.modal-prev {
+	  margin-left: 10vw;
+	}
+	.modal-next {
+	  margin-right: 10vw;
+	}
+}
+
+html {
+	font-size: 16px;
+	body {
+		// border: 1px solid #000;
+		margin: 0 10%;
+		padding: 0;
+		font-family: 'Maven Pro', sans-serif;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;		
+		background-image:  linear-gradient(30deg, rgba(173, 255, 47, 0.5) 0%, rgba(255, 211, 95, 0.4) 100%);
+		background-attachment: fixed;
+		background-size: cover;		
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-repeat: 	no-repeat;	
+		background-position: center;		
+		header {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-content: center;
+			height: 70vh;
+			position: relative; 
+			.menu-wrapper {
+				display: flex;
+				justify-content: space-between;				
+				align-content: center;
+				// border: 1px solid #000;
+				ul#navigation {
+					display: flex;		
+					justify-content: space-around;					
+					width: 100%;									
+					li {
+						display: inline;
+						float: left;
+						width: 100px;
+						a { 
+							// border: 1px solid #000;	
+							display: block;
+						    font-weight: bold;
+						    text-shadow: 1px 1px 1px #fff;
+						    float: left;
+						    width: 100px;
+						    height: 35px;
+						    vertical-align: middle;
+						    color: #603d05;
+						    background: transparent url(../img/item.png) no-repeat bottom right;
+						    text-decoration: none;
+						    text-align: center;
+						    padding-top: 100px;
+						    // margin-top: -30px;
+						    cursor: pointer;
+						}
+					}
+				}
+			}
+			.logo {
+				text-align: center;	
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);			
+				img {
+					width: 436px;
+					height: 201px;
+				}
+			}
+			/* .main-arrow {
+				// z-index: 2;
+				border: 2px solid yellow;
+				position: relative;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 15vh;
+				transition: 1s;
+				.arrow-down {
+					border: 2px solid black;
+					box-shadow: 0px 0px 18px 2.3px rgba(204, 204, 223, 0.5);
+					background-color: #fff;
+					width: 4rem;
+					height: 4rem;
+					border-radius: 50%;
+					display: flex;
+					justify-content: center;		
+				}
+			} */
+		}	
+
+
+		.main {
+			margin: 0 5%;
+			border: 1px solid #fff;
+
+			.description {
+				margin: 0 5%;
+				h2 {
+					text-align: center;
+				}
+			}
+
+			.fotocarousel {
+				// width: 90%;
+				// padding: 0;
+				//  margin: 0 auto;
+				// height: 90%;
+				margin-top: 4rem;
+				display: flex;
+				justify-content: center;			
+				.main-fotorama {
+					border: 3px solid #000;
+					border-radius: 10px;
+				}
+			}
+			
+			.feedback {
+				display: flex;		
+				flex-direction: column;		
+				justify-content: center;
+				align-items: center;
+				margin-top: 4rem;
+				h2 {
+					text-align: center;
+				}
+				h4 {
+					text-align: center;
+				}
+				.js-carousel {
+				  display: flex;
+				  justify-content: space-around;
+				  align-items: center;
+				  width: 100%;
+				  height: 350px;
+				  margin: 10vh auto;
+				  background-color: #ddd;
+				  border-radius: 30px;
+				    -webkit-user-select: none; /*отмена дурацкого выделения*/
+				    -moz-user-select: none;
+				    -ms-user-select: none;
+				  .arrow {
+					padding: 0;
+					vertical-align: middle;
+					background: #ddd;
+					border-radius: 50%;
+					border: 1px solid gray;
+					font-size: 24px;
+					height: 28px;
+					color: #444;
+					display: block;
+					&:focus {
+						outline: none;
+						}
+					&:hover {
+						background: #ccc;
+						cursor: pointer;
+						}
+					}
+					.wrapper {
+					  overflow: hidden;
+					  width: 80%;
+					  height: 220px;
+					  margin: 20px 0;
+					  // outline: 1px solid green;
+					  background-color: inherit;
+					  ul {
+						  display: flex;
+						  // justify-content: space-between;
+						  // width: 50%;
+						  // align-items: center;
+						  list-style: none;
+						  padding: 0;
+						  margin: 0;
+						  transform: translateX(-500px);
+						  transition: transform 0.9s;
+						  li {
+						  	padding: 0 50px;
+						  	// border: 1px solid green;
+						  	// width: 200px;
+							// height: 200px;			  
+						   img {
+							  cursor: pointer;
+							  
+							  // border: 1px solid red;
+							  border-radius: 50%;
+							  width: 250px;
+							  height: 250px;
+							  
+							  &:hover {
+							  	border: 2px solid #fff;
+							  } 
+							}
+						  }
+						}
+					}
+				/*  .wrapper {
+							overflow: hidden;
+							width: 500px;
+							border: 1px solid red;
+							margin: 20px 0;
+							background-color: inherit;
+							display: flex;
+							// list-style: none;
+							padding: 0;
+							margin: 0;
+							// transform: translateX(-300px);
+						    transition: transform 0.9s;
+						    div {
+						    	border: 1px solid green;
+						        img {
+						    	cursor: pointer;
+								transition: all 1s;
+								width: 130px;
+								height: 130px;
+								}
+						    }
+					}	*/				
+				}
+				 .js-carousel_modal {					
+					.modal-arrow, .modal-close {
+					  color: #fff;
+					}
+				} 
+			}
+
+			.partners {				
+				margin-top: 4rem;
+				h2 {
+					text-align: center;
+				}
+				.partners-logos {
+					display: flex;
+					flex-wrap: wrap;
+					align-items: center;
+					justify-content: space-around;
+					img {
+						max-height: 100px;
+						margin: 10px;	
+					}
+				}				
+			}
+
+			.photos {
+				border: 1px solid #fff;
+				position: relative;
+				h1 {
+					text-align: center;
+					margin: 5vh;
+				}
+				.gallery {
+					border: 1px solid red;
+					height: 90vh;
+					display: flex;
+					flex-wrap: wrap;
+					justify-content: space-around;
+					align-items: center;
+					.foto {
+						width: 30%;
+						height: 30%;
+						border-radius: 5px;
+						background-size: cover;
+						background-position: center;
+						background-repeat: no-repeat;
+						cursor: pointer; 						
+					}					
+				}
+				.gal_btn_prev {
+					position: absolute;
+					bottom: 45vh;
+					cursor: pointer;
+				}
+				.gal_btn_next {
+					position: absolute;
+					bottom: 45vh;
+					right: 0;
+					cursor: pointer;
+				}
+				.page_counter {
+					text-align: right;
+				}
+			}
+
+			.video {
+				border: 1px solid #fff;
+				display: flex;
+					flex-wrap: wrap;
+					align-items: center;
+					justify-content: space-around;
+				.video_block {
+					min-width: 40%;
+					height: 250px;
+					border: 1px solid green;
+					margin: 1rem;
+				}
+			}
+
+			.playlist {
+				// display: flex;
+				// flex-direction: row-reverse;
+				.playlist_prompt {
+					width: 45%;
+					float: right;
+					p {
+						text-indent: 10px;
+					}
+					form {
+						input {
+							width: 50%;
+							height: 2rem;
+							margin: 0 25%;
+						}
+						.search_result {
+							ul {
+								li {
+
+								}
+							}
+						}
+					}
+				}
+				.tracks_all {
+					width: 45%;
+					h1 {
+						text-align: center;
+					}
+					.save_tracklist {
+						text-align: center;
+					}
+					h4.show_all {
+							text-align: center;
+						span {
+							cursor: pointer;
+							-webkit-user-select: none;//отмена дурацкого выделения)
+					    	-moz-user-select: none;
+					    	-ms-user-select: none;
+						}						
+					}					
+					.songs_block {
+						border: 1px solid green;
+						h3 {
+							font-weight: 300;
+							text-align: center;
+							 -webkit-user-select: none;//отмена дурацкого выделения)
+						    -moz-user-select: none;
+						    -ms-user-select: none;
+							&:hover {
+								cursor: pointer;
+								font-weight: 530;
+							}
+						}
+						ul {
+							
+						}
+					}
+				}
+			}
+		}
+		footer {
+			display: flex;
+			justify-content: space-around;	
+			margin-top: 4rem;
+			align-items: center;
+			text-align: center;		
+		}		
+	}		
+}		
+	
