@@ -29,8 +29,8 @@ VK.Widgets.Group("vk_groups", {mode: 1, width: "auto"}, 11300735);
 	<!-- скрипты -->
 <script type="text/javascript">	
 	$(function() {
-        	//Плавный скролл по якорям
-        $("#arrow").on("click","a", function (event) {
+        	//Плавный скролл по якорям (не нужен ёпты!!!)
+       /* $("#arrow").on("click","a", function (event) {
 		        //отменяем стандартную обработку нажатия по ссылке
 		    event.preventDefault();
 
@@ -42,7 +42,7 @@ VK.Widgets.Group("vk_groups", {mode: 1, width: "auto"}, 11300735);
 		        
 		        //анимируем переход на расстояние - top за 500 мс
 		    $('body,html').animate({scrollTop: top}, 500);
-		});
+		});*/
          	//Меню навигации:
 		var d = 300;
 		$('#navigation a').each(function () {
@@ -66,7 +66,11 @@ VK.Widgets.Group("vk_groups", {mode: 1, width: "auto"}, 11300735);
 					'marginTop':'-70px'
 				}, 200);
 			}
-		);					
+		);
+		//раскрывающeeся БУРГЕР-меню		
+		$('.hamburger_btn').on('click', function () {
+			$('.hamburger_wrapper').toggleClass('open');
+		});
 	});                    
 </script>
 

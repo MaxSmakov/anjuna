@@ -1,4 +1,5 @@
-<div class="photos" id="scroll_target">
+<div class="photos" id="scroll_target">	
+	<h1>Фотогалерея</h1>
 	<div class="hidden-img" style="display: none"> <!-- сюда загружать фото -->				
 				<img src="/img/gallery/1.png" alt="">
 				<img src="/img/gallery/2.png" alt="">
@@ -47,13 +48,15 @@
 	<div class="gallery_modal"> 
 		<a class="modal-close">&#215;</a>
 		<a class="modal-arrow modal-prev"> < </a>
-		<div class="modal-photo"></div>
+		<div class="modal-photo modal-photo_css"></div>
 		<a class="modal-arrow modal-next"> > </a>
 	</div>
 </div>
 
 <script type="text/javascript">	
-	$(function() {        	
+	$(function() {
+			var WIDTH = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+				
 		//Фотографии:
 		var s = 0; //счетчик
 		var n = document.querySelector('.gallery').children.length; //кол-во фоток, одновременно загруженных на странице
@@ -124,35 +127,50 @@
 			}
 		});	
 		//Модальное окно для фотографий
-		$('.foto').on('click', function () {
+		$('.foto').on('click', function () {			
 			if ($(this).css('background-image') != 'none') {
 				var $this = $(this);
 				var n = $this.index() + s; //счетчик, показывает какая по счету фотка открыта в данный момент
+				var touchobj = null;
+				var startX, dist, pos = 0;
+				// if (WIDTH < 1200) {
+				// 	// console.log($(".hidden-img img").eq(n).attr("src") + '  '+ $('.photos_carousel .fotorama imgd'));
+				// 	// $('.photos_carousel').children[0].children[0].click();
+					
+				// 	return;
+				// }
 				$('.gallery_modal').css({
 					'display' : 'flex' //оживляем модалку
 				});
 				$('.modal-photo').css({
-					'width': '100%',//ставим все нужные нам стили
-					'height': '100%',
-					'background-size': 'content',
-					'background-position': 'center',
-					'background-repeat': 'no-repeat',
+					// 'width': '100%',//ставим все нужные нам стили
+					// 'height': '100%',
+					// 'background-size': 'content',
+					// 'background-position': 'center',
+					// 'background-repeat': 'no-repeat',
 					'background-image': 'url(' + $(".hidden-img img").eq(n).attr("src") + ')'  // вуаля
 				});
-				$('.gallery_modal a.modal-next').on('click', function () {
+				function next_modal() { //на следующую фотку
 					n++;
 					if (n >= k) n = 0; // если счетчик больше или равен кол-ву всех фоток - обнуляем его	
 					$('.modal-photo').css({
 						'background-image': 'url(' + $(".hidden-img img").eq(n).attr("src") + ')'
 					});
-				});
-				$('.gallery_modal a.modal-prev').on('click', function () {
+				}
+				function prev_modal() {//на предыдущую фотку
 					n--;
 					if (n < 0) n = k-1; // если меньше нуля, присваиваем ему значение последней фотки
 					$('.modal-photo').css({
 						'background-image': 'url(' + $(".hidden-img img").eq(n).attr("src") + ')'
 					});
-				});
+				}
+				$('.gallery_modal a.modal-next').on('click', next_modal);
+				$('.gallery_modal a.modal-prev').on('click', prev_modal);
+
+				var elem = document.querySelector('.modal-photo');
+				var hammertime = new Hammer(elem);				
+				hammertime.on("swipeleft", next_modal);
+				hammertime.on("swiperight", prev_modal);		
 			}		 
 		});
 		$('.gallery_modal a.modal-close').on('click', function () { //кнопочка закрытия

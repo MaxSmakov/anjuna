@@ -18,7 +18,10 @@ function Carousel(setting) {
             };
             privates.opt = {
               'position': getTranslateX(privates.main.wrap), //должно совпадать с translateX в CSS-свойствах privates.main.wrap
-              'step': 0
+              'step': 0,
+              'startX': 0,
+              'dist': 0,
+              'touchobj': null
             };
                       // Control
             if (privates.main.prev !== null) {
@@ -32,15 +35,28 @@ function Carousel(setting) {
                 this.next_slide();
               });
             }
+            var hammer_ul = new Hammer(privates.main.wrap);
+            hammer_ul.get('rotate').set({enable: true });
+            hammer_ul.on('swipeleft', () => {
+                this.next_slide();
+              });
+              hammer_ul.on('swiperight', () => {
+                this.prev_slide();
+              }); 
             if (privates.main.wrap !== null) {
               privates.main.wrap.addEventListener('click', (e) => {
                 this.modal(e);
-              })
+              });                                         
             }
+           /* if (privates.main.wrap !== null) {
+              privates.main.wrap.addEventListener('touchstart', (e) => {
+                this.touch(e);
+              });
+            }*/
             /* Public methods */
             // Prev slide
             this.prev_slide = () => {
-               privates.main.wrap.insertBefore(privates.main.wrap.lastElementChild, privates.main.wrap.firstElementChild);
+              privates.main.wrap.insertBefore(privates.main.wrap.lastElementChild, privates.main.wrap.firstElementChild);
               privates.opt.step -= privates.main.width;
               privates.main.wrap.style.marginLeft = privates.opt.step + 'px';
               privates.opt.position += privates.main.width;
@@ -54,8 +70,9 @@ function Carousel(setting) {
               privates.opt.position -= privates.main.width;
               privates.main.wrap.style.transform = "translateX(" + privates.opt.position + "px)";
             }
+           
             this.modal = (e) => {
-               e.preventDefault();
+              e.preventDefault();
               if (e.target.tagName !== 'IMG') return;//если не img то уходим
               privates.modal.main.style.display = 'flex';//выходим из сумрака
               var targetSrc = e.target.getAttribute('src'); // получим src цели

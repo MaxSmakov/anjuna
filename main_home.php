@@ -16,13 +16,13 @@
 		data-fit="cover"
 		data-loop="true"
 		data-autoplay="3000"
-		data-transition="dissolve"
+		data-transition="slide"
 		data-clicktransition="slide"				
 		data-nav="false"								
 	 	>
-	  <img src="img/1.jpg">
-	  <img src="img/2.jpg">
-	  <img src="img/3.jpg">
+	  <img src="/img/1.jpg">
+	  <img src="/img/2.jpg">
+	  <img src="/img/3.jpg">
 	</div>
 </div>	
 
@@ -33,20 +33,20 @@
 		<button class="arrow js-carousel__prev">⇦</button>
 		<div class="wrapper">
 			<ul class="js-carousel__wrap">
-				<li><img src="img/feedback/1.jpg"></li>
-				<li><img src="img/feedback/2.jpg"></li>
-				<li><img src="img/feedback/3.jpg"></li>
-			    <li><img src="img/feedback/4.jpg"></li>
-			    <li><img src="img/feedback/5.jpg"></li>
-			    <li><img src="img/feedback/6.jpg"></li>
-			    <li><img src="img/feedback/7.jpg"></li>
-			    <li><img src="img/feedback/1.jpg"></li>
-			    <li><img src="img/feedback/2.jpg"></li>
-			    <li><img src="img/feedback/3.jpg"></li>
-			    <li><img src="img/feedback/4.jpg"></li>
-			    <li><img src="img/feedback/5.jpg"></li>
-	       		<li><img src="img/feedback/6.jpg"></li>
-	        	<li><img src="img/feedback/7.jpg"></li>
+				<li><img src="/img/feedback/1.jpg"></li>
+				<li><img src="/img/feedback/2.jpg"></li>
+				<li><img src="/img/feedback/3.jpg"></li>
+			    <li><img src="/img/feedback/4.jpg"></li>
+			    <li><img src="/img/feedback/5.jpg"></li>
+			    <li><img src="/img/feedback/6.jpg"></li>
+			    <li><img src="/img/feedback/7.jpg"></li>
+			    <li><img src="/img/feedback/1.jpg"></li>
+			    <li><img src="/img/feedback/2.jpg"></li>
+			    <li><img src="/img/feedback/3.jpg"></li>
+			    <li><img src="/img/feedback/4.jpg"></li>
+			    <li><img src="/img/feedback/5.jpg"></li>
+	       		<li><img src="/img/feedback/6.jpg"></li>
+	        	<li><img src="/img/feedback/7.jpg"></li>
 	      	</ul>
 	    </div>
 	  <button class="arrow js-carousel__next">⇨</button>
@@ -57,27 +57,46 @@
 		<div class="modal-photo"></div>
 		<a class="modal-arrow modal-next"> > </a>
 	</div>
+	<div class="feedback_carousel">			
+		<div class="fotorama feedback-fotorama" 
+			data-allowfullscreen="true"
+			data-fit="scaledown"
+			data-loop="true"
+			data-autoplay="3000"
+			data-transition="slide"
+			data-clicktransition="slide"				
+			data-nav="false"								
+		 	>
+		  <img src="/img/feedback/1.jpg">
+		  <img src="/img/feedback/2.jpg">
+		  <img src="/img/feedback/3.jpg">
+		  <img src="/img/feedback/4.jpg">
+		  <img src="/img/feedback/5.jpg">
+		  <img src="/img/feedback/6.jpg">
+		  <img src="/img/feedback/7.jpg">
+		</div>
+	</div>	
 </div>
 
 <div class="partners">
 	<h2>Нам доверяют</h2>
 	<div class="partners-logos">
-		<img src="img/partners/1.png" alt="">
-		<img src="img/partners/2.png" alt="">
-		<img src="img/partners/3.png" alt="">
-		<img src="img/partners/4.png" alt="">
-		<img src="img/partners/5.png" alt="">
-		<img src="img/partners/6.png" alt="">
-		<img src="img/partners/7.png" alt="">
-		<img src="img/partners/8.png" alt="">
-		<img src="img/partners/9.png" alt="">
-		<img src="img/partners/10.png" alt="">
-		<img src="img/partners/11.png" alt="">
-		<img src="img/partners/12.png" alt="">
-		<img src="img/partners/13.png" alt="">
-		<img src="img/partners/14.png" alt="">
-		<img src="img/partners/15.png" alt="">
-		<img src="img/partners/16.png" alt="">
+		<img src="/img/partners/1.png" alt="">
+		<img src="/img/partners/2.png" alt="">
+		<img src="/img/partners/3.png" alt="">
+		<img src="/img/partners/4.png" alt="">
+		<img src="/img/partners/5.png" alt="">
+		<img src="/img/partners/6.png" alt="">
+		<img src="/img/partners/7.png" alt="">
+		<img src="/img/partners/8.png" alt="">
+		<img src="/img/partners/9.png" alt="">
+		<img src="/img/partners/10.png" alt="">
+		<img src="/img/partners/11.png" alt="">
+		<img src="/img/partners/12.png" alt="">
+		<img src="/img/partners/13.png" alt="">
+		<img src="/img/partners/14.png" alt="">
+		<img src="/img/partners/15.png" alt="">
+		<img src="/img/partners/16.png" alt="">
 	</div>
 </div>
 
@@ -95,5 +114,6 @@
      "modal_prev": ".modal-prev",// кнопка назад в модальном окне
      "modal_next": ".modal-next",// кнопка вперед в модальном окне
      "modal_close": ".modal-close"// кнопка "закрыть"
-    });
+    });  
+     
 </script>	

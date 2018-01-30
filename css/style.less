@@ -51,9 +51,18 @@ ul {
 	}
 	.modal-prev {
 	  margin-left: 10vw;
+	  // display: none;
 	}
 	.modal-next {
 	  margin-right: 10vw;
+	  // display: none;
+	}
+	.modal-photo_css {
+		 width: 100%;
+		height: 100%;
+		background-size: contain;
+		background-position: center;
+		background-repeat: no-repeat;
 	}
 }
 
@@ -82,19 +91,69 @@ html {
 			align-content: center;
 			height: 70vh;
 			position: relative; 
+			.hamburger_btn {
+				display: none;
+				margin: 1rem;
+				align-self: flex-end;
+				border: 1px solid black;
+				border-radius: 5px;
+				padding: 5px;
+				color: orange;
+			}
+			.hamburger_wrapper {
+				height: 0;
+				width: 100%;
+				z-index: 1;
+				position: absolute;
+				top: 12vh;
+				// left: 0;
+				background-color: white;
+				transition: height .5s;
+				overflow: hidden;
+				// padding: 0;
+				ul {
+					overflow: hidden;
+					// margin: 0;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;								
+					li {
+						text-align: center;
+						border: 1px solid green;
+						padding-bottom: 4vh;
+						margin-left: -40px;
+						a {
+							font-size: 18px;
+							-webkit-user-select: none; /*отмена дурацкого выделения*/
+	 					    -moz-user-select: none;
+	 					    -ms-user-select: none;
+							&:active {
+								color: orange;
+							}
+						}
+					}
+				}
+			}
+			.hamburger_wrapper.open {
+				height: 300px;
+				max-height: 100%;
+			}
 			.menu-wrapper {
 				display: flex;
 				justify-content: space-between;				
 				align-content: center;
-				// border: 1px solid #000;
+				position: relative;
+				// border: 1px solid #000;				
 				ul#navigation {
-					display: flex;		
+					display: flex;
+					// display: inline-block; //для старых браузеров		
 					justify-content: space-around;					
 					width: 100%;									
 					li {
 						display: inline;
 						float: left;
 						width: 100px;
+						// margin-left: 1rem; //для старых браузеров
 						a { 
 							// border: 1px solid #000;	
 							display: block;
@@ -114,6 +173,26 @@ html {
 						}
 					}
 				}
+				/* .hamburger_menu {
+					position: absolute;
+					// left: -2rem;
+					display: flex;
+					text-align: center;
+					// background-color: blue;
+					z-index: 2;
+					ul {
+						padding: 0;
+						margin: 1rem;
+						li {
+							border: 1px solid green;
+						}
+					}
+					.close_burger {
+						margin-top: 5px;
+						margin-left: -8px;
+					}
+				} */
+
 			}
 			.logo {
 				text-align: center;	
@@ -175,10 +254,10 @@ html {
 			}
 			
 			.feedback {
-				display: flex;		
-				flex-direction: column;		
-				justify-content: center;
-				align-items: center;
+				// display: flex;		
+				// flex-direction: column;		
+				// justify-content: center;
+				// align-items: center;
 				margin-top: 4rem;
 				h2 {
 					text-align: center;
@@ -280,7 +359,17 @@ html {
 					.modal-arrow, .modal-close {
 					  color: #fff;
 					}
-				} 
+				}
+				.feedback_carousel {
+					display: none;
+					text-align: center;
+					// margin-top: 4rem;
+					// justify-content: center;			
+					.feedback-fotorama {
+						border: 3px solid #000;
+						border-radius: 10px;
+					}
+				}
 			}
 
 			.partners {				
@@ -295,7 +384,9 @@ html {
 					justify-content: space-around;
 					img {
 						max-height: 100px;
-						margin: 10px;	
+						max-width: 320px;
+						margin: 10px;
+
 					}
 				}				
 			}
@@ -305,7 +396,7 @@ html {
 				position: relative;
 				h1 {
 					text-align: center;
-					margin: 5vh;
+					// margin: 5vh;
 				}
 				.gallery {
 					border: 1px solid red;
@@ -326,17 +417,27 @@ html {
 				}
 				.gal_btn_prev {
 					position: absolute;
-					bottom: 45vh;
+					top: 50%;
 					cursor: pointer;
 				}
 				.gal_btn_next {
 					position: absolute;
-					bottom: 45vh;
+					top: 50%;
 					right: 0;
 					cursor: pointer;
 				}
 				.page_counter {
 					text-align: right;
+				}
+				.photos_carousel {
+					display: none;
+					// text-align: center;
+					// margin-top: 4rem;
+					// justify-content: center;			
+					.feedback-fotorama {
+						border: 3px solid #000;
+						border-radius: 10px;
+					}
 				}
 			}
 
@@ -357,9 +458,12 @@ html {
 			.playlist {
 				// display: flex;
 				// flex-direction: row-reverse;
+				h1 {
+						text-align: center;
+					}
 				.playlist_prompt {
 					width: 45%;
-					float: right;
+					float: right;					
 					p {
 						text-indent: 10px;
 					}
@@ -380,9 +484,7 @@ html {
 				}
 				.tracks_all {
 					width: 45%;
-					h1 {
-						text-align: center;
-					}
+					
 					.save_tracklist {
 						text-align: center;
 					}
@@ -414,6 +516,39 @@ html {
 					}
 				}
 			}
+			.tosave {
+
+				h1 {
+					text-align: center;
+				}
+				.formwrapper {
+					display: block;
+					border: 1px solid black;
+					width: 60%;
+					margin-left: 20%;
+					label {
+						display: block;
+					}
+					input, textarea {
+					   border: 1px solid #82858D;
+					   padding: 10px;
+					   font-size: 16px;
+					   width: 100%;
+					}
+					input[type="submit"] {
+					   width: 200px;
+					   max-width: 100%;
+					   display: block;
+					   border: none;
+					   background: #595B5F;
+					   color: #fff;
+					   text-transform: uppercase;
+					}
+				}
+			}
+			.mail {
+				font-size: 1.3rem;
+			}
 		}
 		footer {
 			display: flex;
@@ -422,6 +557,10 @@ html {
 			align-items: center;
 			text-align: center;		
 		}		
-	}		
-}		
+	}
+
+}	
+
+@import url('media.css');	
+
 	
