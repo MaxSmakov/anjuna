@@ -27,51 +27,8 @@ VK.Widgets.Group("vk_groups", {mode: 1, width: "auto"}, 11300735);
 </script> -->
 
 	<!-- скрипты -->
-<script type="text/javascript">	
-	$(function() {
-        	//Плавный скролл по якорям (не нужен ёпты!!!)
-       /* $("#arrow").on("click","a", function (event) {
-		        //отменяем стандартную обработку нажатия по ссылке
-		    event.preventDefault();
-
-		        //забираем идентификатор блока с атрибута href
-		    var id  = $(this).attr('href'),
-
-		       //узнаем высоту от начала страницы до блока на который ссылается якорь
-		    top = $(id).offset().top;
-		        
-		        //анимируем переход на расстояние - top за 500 мс
-		    $('body,html').animate({scrollTop: top}, 500);
-		});*/
-         	//Меню навигации:
-		var d = 300;
-		$('#navigation a').each(function () {
-			var $this = $(this);
-			var r = Math.floor(Math.random()*41)-20;
-			$this.css({'-moz-transform':'rotate('+r+'deg)','-webkit-transform':'rotate('+r+'deg)','transform':'rotate('+r+'deg)'});
-			$this.stop().animate({
-				'marginTop': '-70px'
-			}, d += 150);				
-		});			
-		$('#navigation > li').hover(
-			function () {
-				var $this = $(this);
-				$('a',$this).stop().animate({
-					'marginTop':'-40px'
-				}, 200);
-			},
-			function () {
-				var $this = $(this);
-				$('a',$this).stop().animate({
-					'marginTop':'-70px'
-				}, 200);
-			}
-		);
-		//раскрывающeeся БУРГЕР-меню		
-		$('.hamburger_btn').on('click', function () {
-			$('.hamburger_wrapper').toggleClass('open');
-		});
-	});                    
+<script type="text/javascript">
+	new Nav_and_burger();                 
 </script>
 
 

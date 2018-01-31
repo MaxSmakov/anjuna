@@ -53,10 +53,7 @@
 	</div>
 </div>
 
-<!-- весь js-код в одном файле -->
-<script src="/js/main.js"></script>
 
 <script>
-new Photos();  
-
+	new Photos(); 
 </script>

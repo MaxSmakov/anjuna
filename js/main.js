@@ -254,3 +254,97 @@ function Photos() {
   		});			
   	});
 }
+
+function Nav_and_burger () {
+  $(function() {
+          //Меню навигации:
+    var d = 300;
+    $('#navigation a').each(function () {
+      var $this = $(this);
+      var r = Math.floor(Math.random()*41)-20;
+      $this.css({'-moz-transform':'rotate('+r+'deg)','-webkit-transform':'rotate('+r+'deg)','transform':'rotate('+r+'deg)'});
+      $this.stop().animate({
+        'marginTop': '-70px'
+      }, d += 150);       
+    });     
+    $('#navigation > li').hover(
+      function () {
+        var $this = $(this);
+        $('a',$this).stop().animate({
+          'marginTop':'-40px'
+        }, 200);
+      },
+      function () {
+        var $this = $(this);
+        $('a',$this).stop().animate({
+          'marginTop':'-70px'
+        }, 200);
+      }
+    );
+    //раскрывающeeся БУРГЕР-меню    
+    $('.hamburger_btn').on('click', function () {
+      $('.hamburger_wrapper').toggleClass('open');
+    });
+  }); 
+}
+
+function Playlist () {
+  var tracks = document.querySelectorAll('.tracks_all li'); //
+  var form = document.forms.searching; //
+  var song = form.elements.song; //
+  var ul = document.querySelector('.search_result ul');
+  function search_song () {
+    ul.innerHTML = '';
+    var value = song.value;
+    if (value.length < 3) {
+      ul.innerHTML = '';
+      return;     
+    }   
+    var reg = new RegExp(value, 'i');
+    var reg1 = new RegExp(value.replace(/е/, 'ё'), 'i'); //пока только такое решение придумал, е и ё будут равнозначны
+    var reg2 = new RegExp(value.replace(/ё/, 'е'), 'i');
+    for (var i = 0; i < tracks.length; i++) {
+      if (reg.test(tracks[i].innerHTML) || reg1.test(tracks[i].innerHTML) || reg2.test(tracks[i].innerHTML)) {
+        var li = document.createElement('li');
+        li.innerHTML = tracks[i].innerHTML + ' (' + tracks[i].closest('div').querySelector('h3').innerHTML + ')';
+        ul.appendChild(li);
+      } else {
+        // var li = document.createElement('li');
+        // li.innerHTML = "Нихера нету бляя";
+        // ul.appendChild(li);
+      }
+    }
+    setTimeout(function() {
+      if (!ul.firstChild) {
+        var li = document.createElement('li');
+        li.innerHTML = "Ничего не найдено. Свяжитесь с нами и мы подготовим для вас эту композицию";
+        ul.appendChild(li);
+        // setTimeout('ul.innerHTML = ""', 3000);
+        // $('span.attention').animate({
+        //  'letter-spacing': '1'
+        // }, 300).animate({
+        //  'letter-spacing': '0.1'
+        // }, 700);
+      } 
+    }, 1000);
+  }
+  song.oninput = search_song;
+  var tracks_all = document.querySelector('.tracks_all');
+  function toggle_all() {
+    for (var i = 0; i < tracks_all.querySelectorAll('ul').length; i++) {
+      tracks_all.querySelectorAll('ul')[i].classList.toggle('hidden');
+    }
+  };
+
+  tracks_all.onclick = function (e) {
+    var target = e.target;
+      if (target.tagName != 'H3') return;
+      target.parentNode.querySelector('ul').classList.toggle('hidden');
+  }
+  document.querySelector('.show_all').onclick = toggle_all;
+  document.querySelector('input').addEventListener('keydown', function(e) {
+    if (e.keyCode === 13) { //отменяем нажатие на enter
+    e.preventDefault();
+    }
+    });
+}

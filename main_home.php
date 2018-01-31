@@ -100,9 +100,9 @@
 	</div>
 </div>
 
-  <!-- каруселька для раздела отзывов Feedback -->
-<script src="/js/main.js"></script> 
-    
+
+
+  <!-- каруселька для раздела отзывов Feedback -->    
 <script>
  	new Carousel({
      "main": ".js-carousel", //div с каруселью 

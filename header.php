@@ -18,6 +18,9 @@
 	  <link  href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
 	<script src="https://hammerjs.github.io/dist/hammer.js"></script>
+	<!-- весь js-код в одном файле -->
+	<script src="/js/main.js"></script>
+
 	
 </head>
 
